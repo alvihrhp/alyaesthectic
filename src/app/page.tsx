@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 /** Components */
 import SwiperCore, { Virtual, Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { ArticleCard, GreenCard } from "@/components";
 /** Next Image */
 import Image, { StaticImageData } from "next/image";
 /** Image */
@@ -24,8 +25,6 @@ import DummyService from "@/assets/dummy-service.png";
 import ArticleOne from "@/assets/article-1.png";
 import ArticleTwo from "@/assets/article-2.png";
 import ArticleThree from "@/assets/article-3.png";
-import ICalendar from "@/assets/calendar-icon.svg";
-import IPencill from "@/assets/pencil-icon.svg";
 import TestimonyBg from "@/assets/testimony_bg.png";
 import ArrowRightBold from "@/assets/arrow-right-bold.svg";
 import ArrowLeftBold from "@/assets/arrow-left-bold.svg";
@@ -62,6 +61,7 @@ type Article = {
   date: string;
   author: string;
   desc: string;
+  slug: string;
 };
 
 type Review = {
@@ -134,6 +134,7 @@ export default function Home() {
       date: "12 June 2022",
       author: "David Rhel",
       desc: "Lorem ipsum dolor sit amet consectetur. Pellentesque ornare mauris praesent donec ut quam.",
+      slug: "ini-article-1",
     },
     {
       image: ArticleTwo,
@@ -141,6 +142,7 @@ export default function Home() {
       date: "12 June 2022",
       author: "David Rhel",
       desc: "Lorem ipsum dolor sit amet consectetur. Pellentesque ornare mauris praesent donec ut quam.",
+      slug: "ini-article-2",
     },
     {
       image: ArticleThree,
@@ -148,6 +150,7 @@ export default function Home() {
       date: "12 June 2022",
       author: "David Rhel",
       desc: "Lorem ipsum dolor sit amet consectetur. Pellentesque ornare mauris praesent donec ut quam.",
+      slug: "ini-article-3",
     },
     {
       image: ArticleOne,
@@ -155,6 +158,7 @@ export default function Home() {
       date: "12 June 2022",
       author: "David Rhel",
       desc: "Lorem ipsum dolor sit amet consectetur. Pellentesque ornare mauris praesent donec ut quam.",
+      slug: "ini-article-4",
     },
   ]);
 
@@ -302,26 +306,22 @@ export default function Home() {
               prevEl: ".swiper-doctor-button-prev",
             }}
             virtual
+            wrapperClass="mb-[2.75rem]"
             className="flex flex-nowrap"
           >
             {experts.map((expert: Expert, expertIdx: number) => (
               <SwiperSlide key={expertIdx} virtualIndex={expertIdx}>
-                <div className="drop-shadow-md rounded-xl" key={expertIdx}>
-                  <Image
-                    src={expert.image}
-                    alt=""
-                    className="w-full rounded-tl-xl rounded-tr-xl"
-                  />
-                  <div className="py-[0.5rem] bg-primary-light text-center">
-                    <p className="mb-[0.25rem] font-medium">{expert.name}</p>
-                    <p>{expert.type}</p>
-                  </div>
-                </div>
+                <GreenCard
+                  image={expert.image}
+                  heading={expert.name}
+                  text={expert.type}
+                  key={expertIdx}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-        <div className="flex flex-wrap mt-[2.75rem] justify-center items-center">
+        <div className="flex flex-wrap justify-center items-center">
           <span className="text-primary font-semibold text-2xl mr-[0.875rem]">
             See More Details
           </span>
@@ -411,34 +411,15 @@ export default function Home() {
           >
             {articles.map((article: Article, articleIdx: number) => (
               <SwiperSlide key={articleIdx} virtualIndex={articleIdx}>
-                <div className="relative rounded">
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    className="rounded-t-lg w-full relative z-0"
-                  />
-                  <div className="shadow-lg rounded-lg py-[1.25rem] px-[1rem] relative z-20 bottom-[40px] bg-white">
-                    <h5 className="font-medium text-[1.125rem] text-neutral-90">
-                      {article.title}
-                    </h5>
-                    <div className="flex flex-wrap items-center mt-[0.75rem]">
-                      <div className="flex items-center">
-                        <Image src={ICalendar} alt="" />
-                        <span className="ml-[0.5rem] text-neutral-70 text-[0.825rem]">
-                          12 June 2022
-                        </span>
-                      </div>
-                      <div className="w-[4px] h-[4px] bg-neutral-70 mx-[0.5rem]"></div>
-                      <div className="flex items-center">
-                        <Image src={IPencill} alt="" />
-                        <span className="ml-[0.5rem] text-neutral-70 text-[0.825rem]">
-                          Davis Rhiel
-                        </span>
-                      </div>
-                    </div>
-                    <p className="mt-[1rem] text-neutral-70">{article.desc}</p>
-                  </div>
-                </div>
+                <ArticleCard
+                  image={article.image}
+                  title={article.title}
+                  desc={article.desc}
+                  slug={article.slug}
+                  date={article.date}
+                  author={article.author}
+                  key={articleIdx}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
