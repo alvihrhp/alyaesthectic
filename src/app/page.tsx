@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { ArticleCard, GreenCard } from "@/components";
 /** Next Image */
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 /** Image */
 import SlideDummyOne from "@/assets/slide-dummy-1.png";
 import SlideDummyTwo from "@/assets/slide-dummy-2.jpg";
@@ -200,7 +201,7 @@ export default function Home() {
         </div>
         <div className="absolute bottom-[50px] left-0 w-full z-10">
           <div className="w-full flex flex-col items-center">
-            <p className="italic text-white text-[1.125rem] mb-[0.5rem]">
+            {/* <p className="italic text-white text-[1.125rem] mb-[0.5rem]">
               Our Best Certificate
             </p>
             <div className="flex flex-wrap gap-[20px]">
@@ -209,13 +210,13 @@ export default function Home() {
               <Image src={CertificateThree} alt="" />
               <Image src={CertificateFour} alt="" />
               <Image src={CertificateFive} alt="" />
-            </div>
+            </div> */}
           </div>
         </div>
         <Swiper
           slidesPerView={1}
           spaceBetween={0}
-          className="h-full "
+          className="h-full"
           pagination={{
             type: "progressbar",
             progressbarFillClass: "swiper-pagination-progressbar-fill",
@@ -321,13 +322,16 @@ export default function Home() {
             ))}
           </Swiper>
         </div>
-        <div className="flex flex-wrap justify-center items-center">
-          <span className="text-primary font-semibold text-2xl mr-[0.875rem]">
-            See More Details
-          </span>
-          <Image src={ArrowRight} alt="" />
-        </div>
+        <Link href={"/about"}>
+          <div className="flex flex-wrap justify-center items-center">
+            <span className="text-primary font-semibold text-2xl mr-[0.875rem]">
+              See More Details
+            </span>
+            <Image src={ArrowRight} alt="" />
+          </div>
+        </Link>
       </div>
+
       <div className="w-full flex flex-wrap items-center justify-between">
         <div className="w-[40%] pl-[5rem]">
           <h2 className="text-neutral-80 font-bold text-[2rem]">OUR SERVICE</h2>
