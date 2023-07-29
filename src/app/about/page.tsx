@@ -1,7 +1,14 @@
 "use client";
 import { useState, useRef } from "react";
 /** Components */
-import SwiperCore, { Virtual, Navigation, Pagination, Autoplay } from "swiper";
+import SwiperCore, {
+  Virtual,
+  Navigation,
+  Pagination,
+  Autoplay,
+  FreeMode,
+  Thumbs,
+} from "swiper";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { ArticleCard, GreenCard } from "@/components";
 /** Next Image */
@@ -30,11 +37,15 @@ import cx from "classnames";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/free-mode";
+import "swiper/css/thumbs";
 
 type Object = { [key: string]: any };
 
 export default function About() {
   const [swiperRef, setSwiperRef] = useState<any>(null);
+
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   const [companyValues, setCompanyValues] = useState<Object[]>([
     {
@@ -184,6 +195,19 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
     },
   ];
 
+  const gallerys: string[] = [
+    "https://swiperjs.com/demos/images/nature-1.jpg",
+    "https://swiperjs.com/demos/images/nature-2.jpg",
+    "https://swiperjs.com/demos/images/nature-3.jpg",
+    "https://swiperjs.com/demos/images/nature-4.jpg",
+    "https://swiperjs.com/demos/images/nature-5.jpg",
+    "https://swiperjs.com/demos/images/nature-6.jpg",
+    "https://swiperjs.com/demos/images/nature-7.jpg",
+    "https://swiperjs.com/demos/images/nature-8.jpg",
+    "https://swiperjs.com/demos/images/nature-9.jpg",
+    "https://swiperjs.com/demos/images/nature-10.jpg",
+  ];
+
   return (
     <div className="w-full h-full">
       <div className="py-[2rem] px-[5rem] bg-neutral-ket">
@@ -324,6 +348,53 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
             </Swiper>
           </div>
         </div>
+      </div>
+      <div className="w-full h-full relative">
+        <div className="pt-[2rem] pb-[0.75rem] px-[5rem]">
+          <span className="text-neutral-90 font-semibold text-[2rem]">
+            MY GALLERY
+          </span>
+          <div className="absolute top-[calc(50%)] right-[14px] z-10 cursor-pointer swiper-gallery-button-next rounded-full bg-primary-neutral p-[0.625rem]">
+            <Image src={ArrowRight} alt="" className="w-[20px] h-[20px]" />
+          </div>
+          <div className="absolute top-[calc(50%)] left-[14px] z-10 cursor-pointer swiper-gallery-button-prev rounded-full bg-primary-neutral p-[0.625rem] rotate-180">
+            <Image src={ArrowRight} alt="" className="w-[20px] h-[20px]" />
+          </div>
+        </div>
+        <Swiper
+          spaceBetween={10}
+          navigation={{
+            nextEl: ".swiper-gallery-button-next",
+            prevEl: ".swiper-gallery-button-prev",
+          }}
+          thumbs={{
+            swiper:
+              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+          }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          wrapperClass="w-full h-[504px]"
+        >
+          {gallerys.map((gallery: string, galleryIdx: number) => (
+            <SwiperSlide key={galleryIdx}>
+              <img src={gallery} className="w-full h-[504px]" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <Swiper
+          onSwiper={(swiper: any) => setThumbsSwiper(swiper)}
+          spaceBetween={1}
+          slidesPerView={10.5}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="w-full"
+        >
+          {gallerys.map((gallery: string, galleryIdx: number) => (
+            <SwiperSlide key={galleryIdx}>
+              <img src={gallery} className="cursor-pointer" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
