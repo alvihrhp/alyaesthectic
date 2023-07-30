@@ -58,15 +58,23 @@ export default function Navbar() {
             <Image src={Logo} alt="logo-alya-esthetic" />
           </a>
         </div>
-        <div className="flex lg:hidden">
+        <div className="flex gap-4">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
+            className="py-[.5rem] flex lg:hidden px-[1rem] bg-primary rounded-full text-white text-sm font-semibold"
           >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="w-6 h-6" aria-hidden="true" />
+            Booking
           </button>
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <span className="sr-only">Open main menu</span>
+              <Bars3Icon className="w-6 h-6" aria-hidden="true" />
+            </button>
+          </div>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {links.map((link: Link, linkIdx: number) => (
@@ -77,7 +85,7 @@ export default function Navbar() {
         </div>
         <button
           type="button"
-          className="py-[1rem] ml-6 px-[1.5rem] bg-primary rounded-full text-white text-xl/[1.5rem] font-semibold"
+          className="py-[1rem] ml-6 hidden lg:flex px-[1.5rem] bg-primary rounded-full text-white text-sm font-semibold"
         >
           Booking
         </button>
@@ -101,19 +109,13 @@ export default function Navbar() {
           </div>
           <div className="flow-root mt-6">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="py-6 space-y-2">
+              <div className="flex flex-col gap-4 py-6 space-y-2">
                 {links.map((link: Link, linkIdx: number) => (
                   <a key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")}>
                     {link.name}
                   </a>
                 ))}
               </div>
-              <button
-                type="button"
-                className="py-[1rem] ml-6 px-[1.5rem] bg-primary rounded-full text-white text-xl/[1.5rem] font-semibold"
-              >
-                Booking
-              </button>
             </div>
           </div>
         </Dialog.Panel>

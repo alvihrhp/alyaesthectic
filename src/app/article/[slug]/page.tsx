@@ -78,7 +78,7 @@ export default function Article() {
   const author = searchParams.get("author");
 
   return (
-    <div className="pt-[2.5rem] px-[7.4rem] pb-[3.125rem]">
+    <div className="pt-[2.5rem] px-8 lg:px-[7.4rem] pb-[3.125rem]">
       <Image src={DummyArticle} alt="" />
       <h1 className="mt-[1.5rem] font-bold text-[1.875rem]">{title}</h1>
       <div className="flex flex-wrap items-center mt-[0.75rem]">
@@ -163,11 +163,25 @@ export default function Article() {
           </div>
           <Swiper
             onSwiper={setSwiperRef}
-            slidesPerView={3.2}
+            slidesPerView={3}
             spaceBetween={32}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              }
             }}
             virtual
             className="flex flex-nowrap"

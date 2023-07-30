@@ -48,4 +48,16 @@ input[type=number] {
   width: 100% !important;
   background-color: #38BEAC !important;
 }
+.swiper-pagination-progressbar {
+  transform: rotate(90deg) !important;
+  left: -100px !important;
+  top: 387px !important;
+}
 
+@media screen and (max-width: 992px) {
+  .swiper-pagination-progressbar {
+    transform: rotate(90deg) !important;
+    left: -150px !important;
+    top: 324px !important;
+  }
+}

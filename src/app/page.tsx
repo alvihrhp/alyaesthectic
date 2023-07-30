@@ -38,6 +38,8 @@ import CertificateFive from "@/assets/certificate-5.png";
 /** Libraries */
 import cx from "classnames";
 
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -218,12 +220,14 @@ export default function Home() {
   return (
     <main className="w-full h-full">
       <div className="w-full h-[728px] relative">
-        <div className="absolute top-[528px] left-[160px] z-10 cursor-pointer swiper-banner-button-next">
+
+        <div className="absolute lg:top-[528px] top-[530px] lg:left-[200px] left-[170px] z-10 cursor-pointer swiper-banner-button-next">
           <Image src={ArrowRightBold} alt="" className="w-[20px] h-[20px]" />
         </div>
-        <div className="absolute top-[528px] left-[87px] z-10 cursor-pointer swiper-banner-button-prev">
+        <div className="absolute lg:top-[528px] top-[530px] lg:left-[117px] left-[77px] z-10 cursor-pointer swiper-banner-button-prev">
           <Image src={ArrowLeftBold} alt="" className="w-[20px] h-[20px]" />
         </div>
+
         <div className="absolute bottom-[50px] left-0 w-full z-10">
           <div className="flex flex-col items-center w-full">
             {/* <p className="italic text-white text-[1.125rem] mb-[0.5rem]">
@@ -252,26 +256,28 @@ export default function Home() {
             prevEl: ".swiper-banner-button-prev",
           }}
         >
-          <SwiperSlide className="relative pt-[11.5rem] pl-[5.75rem]">
+          <SwiperSlide className="relative px-[3rem] py-[8rem] lg:pt-[11.5rem] lg:pl-[5.75rem]">
             <Image
               src={SlideDummyOne}
               alt=""
               className="absolute top-0 left-0 object-cover w-full h-full"
             />
             <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-r from-black/[0.22] to-black/[0.22] z-10"></div>
-            <div className="w-[560px]">
-              <h1 className="relative z-10 font-bold text-[3.25rem] text-white drop-shadow-lg mb-[0.5]">
+            <div className="lg:w-[560px] ml-8 lg:ml-0">
+              <h1 className="relative z-10 font-bold text-[2rem] lg:text-[3.25rem] text-white drop-shadow-lg mb-[0.5]">
                 ALYA ESTETIC <br></br> CENTER{" "}
               </h1>
-              <p className="text-[1.25rem] relative z-10 drop-shadow text-white mb-[4rem]">
+              <p className="text-[1.25rem] relative z-10 drop-shadow text-white mb-[2rem]">
                 Berisi penjelasan secara singkat tentang “Alya Estetic Center”
                 kalau bisa diisi dengan maksimal 3 baris atau 4 baris saja
                 secara singkat, untuh penjelasan awal. Atau bisa diisi hilight
                 promo - promo
               </p>
-              <span className="font-semibold text-[1.25rem] text-white relative z-10 mx-[1.5rem]">
-                1 / 3
-              </span>
+              <div className="flex items-center gap-4">
+                <span className="font-semibold text-[1.25rem] text-white relative z-10 ml-[2.3rem] lg:mx-[1.5rem]">
+                  1 / 3
+                </span>
+              </div>
             </div>
           </SwiperSlide>
           <SwiperSlide className="relative">
@@ -293,13 +299,13 @@ export default function Home() {
         </Swiper>
       </div>
 
-      <div className="py-[1.25rem] px-[5rem] bg-neutral-ket" id="about">
+      <div className="py-[1.25rem] px-8 lg:px-[5rem] bg-neutral-ket" id="about">
         <h2 className="text-[2rem] font-semibold text-neutral-90">
           ALYA ESTETIC CENTER
         </h2>
-        <div className="flex flex-wrap mt-[0.75rem] justify-between items-center">
+        <div className="flex flex-wrap mt-[0.75rem] justify-between items-center flex-col lg:flex-row">
           <Image src={Logo} alt="" className="w-[255px]" />
-          <p className="w-[calc(100%-267px)] text-xl/[2rem] text-neutral-90">
+          <p className="w-full lg:w-[calc(100%-267px)] text-xl/[2rem] text-neutral-90">
             Lorem ipsum dolor sit amet consectetur. Neque felis nisi vitae
             ornare est. Ornare cum luctus diam nisl ornare nunc in mattis
             aliquet. Eu faucibus nunc orci proin facilisis rhoncus et et sapien.
@@ -326,7 +332,7 @@ export default function Home() {
           </div>
           <Swiper
             onSwiper={setSwiperRef}
-            slidesPerView={4}
+            slidesPerView={2}
             spaceBetween={8}
             navigation={{
               nextEl: ".swiper-doctor-button-next",
@@ -335,6 +341,16 @@ export default function Home() {
             virtual
             wrapperClass="mb-[2.75rem]"
             className="flex flex-nowrap"
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              }
+            }}
           >
             {experts.map((expert: Expert, expertIdx: number) => (
               <SwiperSlide key={expertIdx} virtualIndex={expertIdx}>
@@ -358,9 +374,9 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between w-full" id="service">
+      <div className="flex flex-col flex-wrap items-center justify-between w-full lg:flex-row" id="service">
         <Tab.Group vertical>
-          <div className="w-[40%] pl-[5rem]">
+          <div className="flex flex-col p-8 lg:hidden">
             <h2 className="text-neutral-80 font-bold text-[2rem]">OUR SERVICE</h2>
             <p className="text-neutral-70">
               Alya Esthetic is a beauty clinic that promotes and values
@@ -368,23 +384,34 @@ export default function Home() {
               Esthetic helps clients to reveal their hidden layers of beauty
               underneath.
             </p>
-
-            {services.map((service: Service, serviceIdx: number) => (
-              <Tab.List className="mt-2">
-                <Tab
-                  key={serviceIdx}
-                  className="pl-[1rem] py-[0.75rem] flex flex-wrap items-center border-b cursor-pointer"
-                  >
-                  <Image src={service.icon} alt={service.title} />
-                  <span className="pl-[0.75rem] text-[1.5rem] text-neutral-80">
-                    {service.title}
-                  </span>
-                </Tab>
-              </Tab.List>
-            ))}
+          </div>
+          <div className="lg:w-[40%] w-full pl-8 lg:pl-[5rem]">
+            <h2 className="text-neutral-80 font-bold text-[2rem] hidden lg:block">OUR SERVICE</h2>
+            <p className="hidden text-neutral-70 lg:block">
+              Alya Esthetic is a beauty clinic that promotes and values
+              hospitality, health and one-stop solution for everyone. Alya
+              Esthetic helps clients to reveal their hidden layers of beauty
+              underneath.
+            </p>
+            
+            <div className="flex flex-row overflow-auto lg:flex-col">
+              {services.map((service: Service, serviceIdx: number) => (
+                <Tab.List className="mt-2">
+                  <Tab
+                    key={serviceIdx}
+                    className="pl-0 w-max lg:mr-0 mr-4 lg:pl-[1rem] py-[0.75rem] flex flex-col lg:flex-row flex-wrap items-center border-b cursor-pointer justify-center"
+                    >
+                    <Image src={service.icon} alt={service.title} className="w-5 h-5 lg:w-16 lg:h-16" />
+                    <span className="pl-[0.75rem] lg:text-[1.5rem] text-neutral-80 text-base">
+                      {service.title}
+                    </span>
+                  </Tab>
+                </Tab.List>
+              ))}
+            </div>
           </div>
 
-          <div className="w-[60%] p-[2rem] bg-neutral-ket">
+          <div className="w-full lg:w-[60%] p-[2rem] bg-neutral-ket">
             <Tab.Panels>
               <Tab.Panel>
                   <h2 className="text-neutral-90 text-[2.25rem] font-bold mb-[1rem]">
@@ -432,7 +459,7 @@ export default function Home() {
         </Tab.Group>
       </div>
 
-      <div className="pl-[5rem] pt-[3.125rem] pb-[6.75rem]" id="article">
+      <div className="pl-8 lg:pl-[5rem] pt-[3.125rem] pb-[6.75rem]" id="article">
         <h1 className="font-bold text-[2rem] text-neutral-90">ARTICLE</h1>
         <div className="mt-[5rem] relative min-width-[0px]">
           <div className="absolute top-[calc(50%-55px)] right-[68px] z-10 cursor-pointer swiper-button-next rounded-full bg-primary-neutral p-[0.625rem]">
@@ -443,7 +470,7 @@ export default function Home() {
           </div>
           <Swiper
             onSwiper={setSwiperRef}
-            slidesPerView={3.2}
+            slidesPerView={3}
             spaceBetween={32}
             navigation={{
               nextEl: ".swiper-button-next",
@@ -451,6 +478,16 @@ export default function Home() {
             }}
             virtual
             className="flex flex-nowrap"
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              }
+            }}
           >
             {articles.map((article: Article, articleIdx: number) => (
               <SwiperSlide key={articleIdx} virtualIndex={articleIdx}>
@@ -469,11 +506,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full mt-[1rem] relative pl-[5rem] pt-[5.75rem] h-[500px] z-[-1]">
+      <div className="w-full mt-[1rem] relative pl-8 lg:pl-[5rem] pt-[5.75rem] h-[500px] z-[-1]">
         <Image
           src={TestimonyBg}
           alt=""
-          className="absolute top-0 left-0 w-full"
+          className="absolute top-0 left-0 w-full h-[70vh] md:h-auto object-cover"
         />
         <h2 className="text-white relative font-bold text-[3rem]">
           WHAT THEY <br></br> THOUGHT <br></br> ABOUT US
@@ -491,6 +528,20 @@ export default function Home() {
           onSlideChange={(e) => setActiveReview(e.realIndex)}
           slidesPerView={2}
           spaceBetween={-50}
+          breakpoints={{
+            320: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: -40,
+            },
+            1024: {
+              slidesPerView: 2,
+              spaceBetween: -50
+            }
+          }}
           loop={true}
           autoplay={{
             delay: 5000,
@@ -515,10 +566,10 @@ export default function Home() {
                   ["shadow-lg scale-100"]: reviewIdx === activeReview,
                 })}
               >
-                <p className="text-[1.25rem] color-neutral-70 font-thin mb-[1rem]">
+                <p className=" md:text-[1.25rem] text-sm color-neutral-70 font-thin mb-[1rem]">
                   {review.text}
                 </p>
-                <span className="italic font-medium text-[1.125rem] text-neutral-80">
+                <span className="italic font-medium md:text-[1.125rem] text-sm text-neutral-80">
                   Talan Bator -{" "}
                   <span className="font-normal">Jenis Perawatan 4</span>
                 </span>

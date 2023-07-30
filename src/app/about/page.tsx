@@ -210,7 +210,7 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
 
   return (
     <div className="w-full h-full">
-      <div className="py-[2rem] px-[5rem] bg-neutral-ket">
+      <div className="py-[2rem] lg:px-[5rem] px-[2rem] bg-neutral-ket">
         <h2 className="text-[2rem] font-semibold text-neutral-90">
           ALYA ESTETIC CENTER
         </h2>
@@ -225,13 +225,13 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
           </p>
         </div>
       </div>
-      <div className="py-[2.5rem] px-[5rem] flex justify-center items-center">
+      <div className="py-[2.5rem] lg:px-[5rem] px-[2rem] lg:flex-row flex-col flex justify-center items-center">
         <Image
           src={Logo}
           alt="alya-estetic-logo"
           className="w-[436px] mr-[1.25rem]"
         />
-        <div className="w-[calc(100%-436px)]">
+        <div className="w-full lg:w-[calc(100%-436px)]">
           {companyValues.map((companyValue: Object, companyValueIdx) => (
             <div
               className={cx("w-full", {
@@ -276,7 +276,7 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
           ))}
         </div>
       </div>
-      <div className="w-full mt-[2.5rem] px-[5rem]">
+      <div className="w-full mt-[2.5rem] lg:px-[5rem] px-[2rem]">
         <h1 className="w-full text-[2rem] text-neutral-90 font-medium pb-[0.75rem] border-b-[4px] border-[#EEEEEE]">
           EXECUTIVE <br /> ALYA ESTHETIC CENTER
         </h1>
@@ -349,7 +349,7 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
           </div>
         </div>
       </div>
-      <div className="w-full h-full relative">
+      <div className="relative w-full h-full">
         <div className="pt-[2rem] pb-[0.75rem] px-[5rem]">
           <span className="text-neutral-90 font-semibold text-[2rem]">
             MY GALLERY

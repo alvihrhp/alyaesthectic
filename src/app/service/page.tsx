@@ -203,7 +203,7 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
 
   return (
     <div className="w-full h-full">
-      <div className="py-[2rem] px-[5rem] flex justify-between items-center">
+      <div className="py-[2rem] px-8 lg:px-[5rem] flex justify-between items-center">
         <div className="flex flex-col">
           <h2 className="text-[2rem] font-semibold text-neutral-90">
             Beauty Advance Treatment
@@ -215,10 +215,10 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
         <Image
           src={LogoOnly}
           alt="alya-estetic-logo"
-          className="w-40"
+          className="hidden w-40 md:block"
         />
       </div>
-      <div className="w-full mt-[2.5rem] px-[5rem]">
+      <div className="w-full mt-[2.5rem] px-8 lg:px-[5rem]">
         <div className="mt-[2rem]">
           <div className="w-full max-w-[1040px] mx-auto flex flex-wrap justify-center gap-x-[0.8rem] gap-y-[2rem] mt-[1.5rem] pb-[2rem] border-b-[2px]">
             {/* <div className="fixed inset-0 flex items-center justify-center">
