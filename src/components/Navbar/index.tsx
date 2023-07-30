@@ -51,7 +51,7 @@ export default function Navbar() {
   return (
 
     <header>
-      <nav className="w-full py-[1.5rem] px-[5rem] bg-white flex flex-wrap justify-between items-center sticky top-0 z-30" aria-label="Global">
+      <nav className="w-full md:py-[1.5rem] py-[1.5rem] px-[1.2rem] md:px-[5rem] bg-white flex flex-wrap justify-between items-center sticky top-0 z-30" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Alya Aesthetic</span>
