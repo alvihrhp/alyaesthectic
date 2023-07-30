@@ -38,7 +38,7 @@ export default function Footer() {
   ];
 
   return (
-    <div className="w-full py-[3.125rem] px-[5rem] flex flex-wrap justify-between items-center">
+    <div className="w-full py-[3.125rem] px-[5rem] flex flex-wrap justify-between items-center" id="footer">
       <div className="w-[276px]">
         <Image
           src={Logo}

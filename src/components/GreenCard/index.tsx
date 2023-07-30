@@ -20,11 +20,11 @@ export default function GreenCard({
   heightImage,
 }: Data) {
   return (
-    <div className="drop-shadow-md">
+    <div className="drop-shadow-md w-fit">
       <Image
         src={image}
         alt=""
-        className={cx("rounded-t-lg border-[1px] border-[#DCDCDC]", {
+        className={cx("rounded-t-lg border-[1px] border-[#DCDCDC] object-cover", {
           ["cursor-pointer"]: from,
           ["w-[250px] h-[250px]"]: !widthImage && !heightImage,
           [`${widthImage} ${heightImage}`]: widthImage && heightImage,

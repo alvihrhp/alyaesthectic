@@ -44,6 +44,16 @@ import "swiper/css/pagination";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
+import { Tab } from '@headlessui/react'
+
+// Import tw elements lib
+// import {
+//   TETabs,
+//   TETabsContent,
+//   TETabsItem,
+//   TETabsPane,
+// } from "tw-elements-react";
+
 type Expert = {
   image: StaticImageData;
   name: string;
@@ -54,6 +64,7 @@ type Service = {
   icon: StaticImageData;
   title: string;
   link: string;
+  id: string;
 };
 
 type Article = {
@@ -76,6 +87,15 @@ export default function Home() {
   const [activeReview, setActiveReview] = useState<number>(0);
 
   const [swiperRef, setSwiperRef] = useState<any>(null);
+
+  // const [verticalActive, setVerticalActive] = useState("ba");
+
+  // const handleVerticalClick = (value: string) => {
+  //   if (value === verticalActive) {
+  //     return;
+  //   }
+  //   setVerticalActive(value);
+  // };
 
   const experts: Expert[] = [
     {
@@ -105,26 +125,31 @@ export default function Home() {
       icon: IAdvance,
       title: "Beauty Advance",
       link: "",
+      id: "ba",
     },
     {
       icon: IHabits,
       title: "Beauty Habits",
       link: "",
+      id: "bh",
     },
     {
       icon: IBar,
       title: "Beauty Bar",
       link: "",
+      id: "bb",
     },
     {
       icon: IDental,
       title: "Dental",
       link: "",
+      id: "den",
     },
     {
       icon: IWellness,
       title: "Wellness",
       link: "",
+      id: "well",
     },
   ];
 
@@ -200,7 +225,7 @@ export default function Home() {
           <Image src={ArrowLeftBold} alt="" className="w-[20px] h-[20px]" />
         </div>
         <div className="absolute bottom-[50px] left-0 w-full z-10">
-          <div className="w-full flex flex-col items-center">
+          <div className="flex flex-col items-center w-full">
             {/* <p className="italic text-white text-[1.125rem] mb-[0.5rem]">
               Our Best Certificate
             </p>
@@ -231,7 +256,7 @@ export default function Home() {
             <Image
               src={SlideDummyOne}
               alt=""
-              className="w-full h-full absolute top-0 left-0"
+              className="absolute top-0 left-0 object-cover w-full h-full"
             />
             <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-r from-black/[0.22] to-black/[0.22] z-10"></div>
             <div className="w-[560px]">
@@ -253,7 +278,7 @@ export default function Home() {
             <Image
               src={SlideDummyTwo}
               alt=""
-              className="w-full h-full absolute top-0 left-0"
+              className="absolute top-0 left-0 object-cover w-full h-full"
             />
             <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-r from-black/[0.22] to-black/[0.22] z-10"></div>
           </SwiperSlide>
@@ -261,13 +286,14 @@ export default function Home() {
             <Image
               src={SlideDummyThree}
               alt=""
-              className="w-full h-full absolute top-0 left-0"
+              className="absolute top-0 left-0 object-cover w-full h-full"
             />
             <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-r from-black/[0.22] to-black/[0.22] z-10"></div>
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="py-[1.25rem] px-[5rem] bg-neutral-ket">
+
+      <div className="py-[1.25rem] px-[5rem] bg-neutral-ket" id="about">
         <h2 className="text-[2rem] font-semibold text-neutral-90">
           ALYA ESTETIC CENTER
         </h2>
@@ -300,8 +326,8 @@ export default function Home() {
           </div>
           <Swiper
             onSwiper={setSwiperRef}
-            slidesPerView={3.2}
-            spaceBetween={32}
+            slidesPerView={4}
+            spaceBetween={8}
             navigation={{
               nextEl: ".swiper-doctor-button-next",
               prevEl: ".swiper-doctor-button-prev",
@@ -323,7 +349,7 @@ export default function Home() {
           </Swiper>
         </div>
         <Link href={"/about"}>
-          <div className="flex flex-wrap justify-center items-center">
+          <div className="flex flex-wrap items-center justify-center">
             <span className="text-primary font-semibold text-2xl mr-[0.875rem]">
               See More Details
             </span>
@@ -332,68 +358,81 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className="w-full flex flex-wrap items-center justify-between">
-        <div className="w-[40%] pl-[5rem]">
-          <h2 className="text-neutral-80 font-bold text-[2rem]">OUR SERVICE</h2>
-          <p className="text-neutral-70">
-            Alya Esthetic is a beauty clinic that promotes and values
-            hospitality, health and one-stop solution for everyone. Alya
-            Esthetic helps clients to reveal their hidden layers of beauty
-            underneath.
-          </p>
-          <div className="mt-[2rem]">
+      <div className="flex flex-wrap items-center justify-between w-full" id="service">
+        <Tab.Group vertical>
+          <div className="w-[40%] pl-[5rem]">
+            <h2 className="text-neutral-80 font-bold text-[2rem]">OUR SERVICE</h2>
+            <p className="text-neutral-70">
+              Alya Esthetic is a beauty clinic that promotes and values
+              hospitality, health and one-stop solution for everyone. Alya
+              Esthetic helps clients to reveal their hidden layers of beauty
+              underneath.
+            </p>
+
             {services.map((service: Service, serviceIdx: number) => (
-              <div
-                className="pl-[1rem] py-[0.75rem] flex flex-wrap items-center border-b cursor-pointer"
-                key={serviceIdx}
-              >
-                <Image src={service.icon} alt={service.title} />
-                <span className="pl-[0.75rem] text-[1.5rem] text-neutral-80">
-                  {service.title}
-                </span>
-              </div>
+              <Tab.List className="mt-2">
+                <Tab
+                  key={serviceIdx}
+                  className="pl-[1rem] py-[0.75rem] flex flex-wrap items-center border-b cursor-pointer"
+                  >
+                  <Image src={service.icon} alt={service.title} />
+                  <span className="pl-[0.75rem] text-[1.5rem] text-neutral-80">
+                    {service.title}
+                  </span>
+                </Tab>
+              </Tab.List>
             ))}
           </div>
-        </div>
-        <div className="w-[60%] p-[2rem] bg-neutral-ket">
-          <h2 className="text-neutral-90 text-[2.25rem] font-bold mb-[1rem]">
-            Beauty Advance Treatment
-          </h2>
-          <Image src={DummyService} alt="" className="w-full" />
-          <p className="mt-[1rem] text-neutral-80 text-[1.25rem]">
-            Alya Esthetic have a special various treatment for rejuvenation. We
-            will helps to get the preferable skin for every skin. We provide
-            with high maintenance tools and our products to use daily.
-          </p>
-          <div className="mt-[1rem]">
-            <span className="font-semibold text-[1.25rem]">
-              This package includes
-            </span>
-            <ul className="mt-[0.25rem] list-disc ml-[2rem]">
-              <li className="text-neutral-80 text-[1.25rem]">Peeling Series</li>
-              <li className="text-neutral-80 text-[1.25rem]">HIFU Series</li>
-              <li className="text-neutral-80 text-[1.25rem]">
-                Hair Fall Treatment Series
-              </li>
-              <li className="text-neutral-80 text-[1.25rem]">
-                Laser Treatment Series
-              </li>
-              <li className="text-neutral-80 text-[1.25rem]">
-                Laser Soprano Ice Platinum Series Slimming Series
-              </li>
-            </ul>
+
+          <div className="w-[60%] p-[2rem] bg-neutral-ket">
+            <Tab.Panels>
+              <Tab.Panel>
+                  <h2 className="text-neutral-90 text-[2.25rem] font-bold mb-[1rem]">
+                    Beauty Advance Treatment
+                  </h2>
+                  <Image src={DummyService} alt="" className="w-full" />
+                  <p className="mt-[1rem] text-neutral-80 text-[1.25rem]">
+                    Alya Esthetic have a special various treatment for rejuvenation. We
+                    will helps to get the preferable skin for every skin. We provide
+                    with high maintenance tools and our products to use daily.
+                  </p>
+                  <div className="mt-[1rem]">
+                    <span className="font-semibold text-[1.25rem]">
+                      This package includes
+                    </span>
+                    <ul className="mt-[0.25rem] list-disc ml-[2rem]">
+                      <li className="text-neutral-80 text-[1.25rem]">Peeling Series</li>
+                      <li className="text-neutral-80 text-[1.25rem]">HIFU Series</li>
+                      <li className="text-neutral-80 text-[1.25rem]">
+                        Hair Fall Treatment Series
+                      </li>
+                      <li className="text-neutral-80 text-[1.25rem]">
+                        Laser Treatment Series
+                      </li>
+                      <li className="text-neutral-80 text-[1.25rem]">
+                        Laser Soprano Ice Platinum Series Slimming Series
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="mt-[1rem]">
+                    <button
+                      type="button"
+                      className="w-full rounded-full py-[1rem] bg-primary/[0.4] text-center border border-primary shadow shadow-primary text-primary font-semibold text-[1.25rem]"
+                    >
+                      See More
+                    </button>
+                  </div>
+              </Tab.Panel>
+              <Tab.Panel>Content 2</Tab.Panel>
+              <Tab.Panel>Content 3</Tab.Panel>
+              <Tab.Panel>Content 4</Tab.Panel>
+              <Tab.Panel>Content 5</Tab.Panel>
+            </Tab.Panels>
           </div>
-          <div className="mt-[1rem]">
-            <button
-              type="button"
-              className="w-full rounded-full py-[1rem] bg-primary/[0.4] text-center border border-primary shadow shadow-primary text-primary font-semibold text-[1.25rem]"
-            >
-              See More
-            </button>
-          </div>
-        </div>
+        </Tab.Group>
       </div>
-      <div className="pl-[5rem] pt-[3.125rem] pb-[6.75rem]">
+
+      <div className="pl-[5rem] pt-[3.125rem] pb-[6.75rem]" id="article">
         <h1 className="font-bold text-[2rem] text-neutral-90">ARTICLE</h1>
         <div className="mt-[5rem] relative min-width-[0px]">
           <div className="absolute top-[calc(50%-55px)] right-[68px] z-10 cursor-pointer swiper-button-next rounded-full bg-primary-neutral p-[0.625rem]">
@@ -429,6 +468,7 @@ export default function Home() {
           </Swiper>
         </div>
       </div>
+
       <div className="w-full mt-[1rem] relative pl-[5rem] pt-[5.75rem] h-[500px] z-[-1]">
         <Image
           src={TestimonyBg}
@@ -439,6 +479,7 @@ export default function Home() {
           WHAT THEY <br></br> THOUGHT <br></br> ABOUT US
         </h2>
       </div>
+      
       <div className="relative bottom-[120px]">
         <div className="absolute top-[calc(50%-55px)] right-[68px] z-10 cursor-pointer swiper-review-button-next rounded-full bg-primary-neutral p-[0.625rem]">
           <Image src={ArrowRight} alt="" className="w-[30px] h-[30px]" />
