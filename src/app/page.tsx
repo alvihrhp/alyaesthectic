@@ -263,11 +263,11 @@ export default function Home() {
               className="absolute top-0 left-0 object-cover w-full h-full"
             />
             <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-r from-black/[0.22] to-black/[0.22] z-10"></div>
-            <div className="lg:w-[560px] ml-8 lg:ml-0">
+            <div className="lg:w-[560px] ml-8 lg:ml-[34px]">
               <h1 className="relative z-10 font-bold text-[2rem] lg:text-[3.25rem] text-white drop-shadow-lg mb-[0.5]">
                 ALYA ESTETIC <br></br> CENTER{" "}
               </h1>
-              <p className="text-[1.25rem] relative z-10 drop-shadow text-white mb-[2rem]">
+              <p className="text-[1.25rem] relative z-10 drop-shadow text-white mb-[2rem] lg:mb-[3.8rem]">
                 Berisi penjelasan secara singkat tentang “Alya Estetic Center”
                 kalau bisa diisi dengan maksimal 3 baris atau 4 baris saja
                 secara singkat, untuh penjelasan awal. Atau bisa diisi hilight
