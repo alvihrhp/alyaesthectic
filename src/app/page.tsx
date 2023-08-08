@@ -324,10 +324,10 @@ export default function Home() {
           service. See for more detail
         </p>
         <div className="flex gap-[2rem] mt-[0.75rem] relative">
-          <div className="absolute top-[calc(50%-55px)] right-[68px] z-10 cursor-pointer swiper-doctor-button-next rounded-full bg-primary-neutral p-[0.625rem]">
+          <div className="absolute top-[calc(50%-55px)] right-4 z-10 cursor-pointer swiper-doctor-button-next rounded-full bg-primary-neutral p-[0.625rem]">
             <Image src={ArrowRight} alt="" className="w-[20px] h-[20px]" />
           </div>
-          <div className="absolute top-[calc(50%-53px)] left-[1px] z-10 cursor-pointer swiper-doctor-button-prev rounded-full bg-primary-neutral p-[0.625rem] rotate-180">
+          <div className="absolute top-[calc(50%-53px)] left-4 z-10 cursor-pointer swiper-doctor-button-prev rounded-full bg-primary-neutral p-[0.625rem] rotate-180">
             <Image src={ArrowRight} alt="" className="w-[20px] h-[20px]" />
           </div>
           <Swiper
@@ -442,12 +442,12 @@ export default function Home() {
                     </ul>
                   </div>
                   <div className="mt-[1rem]">
-                    <button
-                      type="button"
-                      className="w-full rounded-full py-[1rem] bg-primary/[0.4] text-center border border-primary shadow shadow-primary text-primary font-semibold text-[1.25rem]"
+                    <Link 
+                      href="service"
+                      className="w-full block rounded-full py-[1rem] bg-primary/[0.4] text-center border border-primary shadow shadow-primary text-primary font-semibold text-[1.25rem]"
                     >
                       See More
-                    </button>
+                    </Link>
                   </div>
               </Tab.Panel>
               <Tab.Panel>Content 2</Tab.Panel>
@@ -462,10 +462,10 @@ export default function Home() {
       <div className="pl-8 lg:pl-[5rem] pt-[3.125rem] pb-[6.75rem]" id="article">
         <h1 className="font-bold text-[2rem] text-neutral-90">ARTICLE</h1>
         <div className="mt-[5rem] relative min-width-[0px]">
-          <div className="absolute top-[calc(50%-55px)] right-[68px] z-10 cursor-pointer swiper-button-next rounded-full bg-primary-neutral p-[0.625rem]">
+          <div className="absolute top-[calc(50%-55px)] right-[64px] z-10 cursor-pointer swiper-button-next rounded-full bg-primary-neutral p-[0.625rem]">
             <Image src={ArrowRight} alt="" className="w-[20px] h-[20px]" />
           </div>
-          <div className="absolute top-[calc(50%-53px)] left-[1px] z-10 cursor-pointer swiper-button-prev rounded-full bg-primary-neutral p-[0.625rem] rotate-180">
+          <div className="absolute top-[calc(50%-53px)] left-4 z-10 cursor-pointer swiper-button-prev rounded-full bg-primary-neutral p-[0.625rem] rotate-180">
             <Image src={ArrowRight} alt="" className="w-[20px] h-[20px]" />
           </div>
           <Swiper

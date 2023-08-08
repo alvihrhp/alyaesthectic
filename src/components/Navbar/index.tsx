@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 /** Next Component */
 import Image from "next/image";
 /** Image */
 import Logo from "@/assets/logo-and-text.svg";
 /** Libraries */
 import cx from "classnames";
+
 
 
 import { Dialog } from '@headlessui/react'
@@ -27,22 +29,22 @@ export default function Navbar() {
     {
       name: "About",
       active: false,
-      href:"#about"
+      href:"/#about"
     },
     {
       name: "Service",
       active: false,
-      href:"#service"
+      href:"/#service"
     },
     {
       name: "Article",
       active: false,
-      href:"#article"
+      href:"/#article"
     },
     {
       name: "Contact",
       active: false,
-      href:"#footer"
+      href:"/#footer"
     },
   ]);
 
@@ -59,12 +61,12 @@ export default function Navbar() {
           </a>
         </div>
         <div className="flex gap-4">
-          <button
-            type="button"
+          <Link
+            href="https://calendly.com/digoens/30min"
             className="py-[.5rem] flex lg:hidden px-[1rem] bg-primary rounded-full text-white text-sm font-semibold"
           >
             Booking
-          </button>
+          </Link>
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -78,17 +80,17 @@ export default function Navbar() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {links.map((link: Link, linkIdx: number) => (
-            <a key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")}>
+            <Link key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")}>
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
-        <button
-          type="button"
+        <Link
+          href="https://calendly.com/digoens/30min"
           className="py-[1rem] ml-6 hidden lg:flex px-[1.5rem] bg-primary rounded-full text-white text-sm font-semibold"
         >
           Booking
-        </button>
+        </Link>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-50" />
@@ -111,7 +113,7 @@ export default function Navbar() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="flex flex-col gap-4 py-6 space-y-2">
                 {links.map((link: Link, linkIdx: number) => (
-                  <a key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")}>
+                  <a key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")} onClick={() => setMobileMenuOpen(false)}>
                     {link.name}
                   </a>
                 ))}

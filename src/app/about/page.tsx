@@ -26,6 +26,8 @@ import ManagementThree from "@/assets/mgt-dummy-3.png";
 import UnitOne from "@/assets/unit-dummy-1.png";
 import UnitTwo from "@/assets/unit-dummy-1.png";
 import UnitThree from "@/assets/unit-dummy-1.png";
+import UnitFour from "@/assets/unit-dummy-1.png";
+import UnitFive from "@/assets/unit-dummy-1.png";
 import ArrowRight from "@/assets/arrow-right.svg";
 import ArrowUpWhite from "@/assets/arrow-up-white.svg";
 import ArrowDownBlack from "@/assets/arrow-down-black.svg";
@@ -39,6 +41,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
+import { Disclosure } from "@headlessui/react";
+import { ChevronRightIcon, ChevronUpIcon } from '@heroicons/react/20/solid'
 
 type Object = { [key: string]: any };
 
@@ -181,17 +185,27 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
     {
       image: UnitOne,
       name: "Miracle Franci",
-      type: "Devisi Salon",
+      type: "Devisi Salon 1",
     },
     {
       image: UnitTwo,
       name: "Miracle Franci",
-      type: "Devisi Salon",
+      type: "Devisi Salon 2",
     },
     {
       image: UnitThree,
       name: "Miracle Franci",
-      type: "Devisi Salon",
+      type: "Devisi Salon 3",
+    },
+    {
+      image: UnitFour,
+      name: "Miracle Franci",
+      type: "Devisi Salon 4",
+    },
+    {
+      image: UnitFive,
+      name: "Miracle Franci",
+      type: "Devisi Salon 5",
     },
   ];
 
@@ -232,48 +246,25 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
           className="w-[436px] mr-[1.25rem]"
         />
         <div className="w-full lg:w-[calc(100%-436px)]">
-          {companyValues.map((companyValue: Object, companyValueIdx) => (
-            <div
-              className={cx("w-full", {
-                ["mb-[0.75rem]"]:
-                  companyValueIdx === 0 && companyValue.isActive,
-                ["my-[0.75rem]"]:
-                  companyValueIdx === 1 && companyValue.isActive,
-                ["mt-[0.75rem]"]:
-                  companyValueIdx === 2 && companyValue.isActive,
-                ["border-b-[1px]"]: !companyValue.isActive,
-              })}
-            >
-              <div
-                key={companyValueIdx}
-                className={cx(
-                  "p-[0.75rem] w-full bg-primary flex justify-between items-center rounded-tl-[0.75rem] rounded-tr-[0.75rem] drop-shadow-[0_4px_8px_0_rgba(0,0,0,0.10)]",
-                  {
-                    ["bg-white rounded-none"]: !companyValue.isActive,
-                  }
+          <div className="w-full bg-white rounded-2xl">
+            {companyValues.map((companyValue: Object, companyValueIdx) => (
+              <Disclosure key={companyValueIdx} defaultOpen={companyValue.isActive}>
+                {({ open }) => (
+                  <div className={`${open ? 'border-primary border rounded-[0.75rem]' : 'border-b border-blue-50'} mb-4`}>
+                    <Disclosure.Button className={`${open ? 'bg-primary' : 'bg-white'} flex justify-between w-full px-4 py-2 text-left rounded-br-none rounded-bl-none rounded-tl-[0.75rem] rounded-tr-[0.75rem] text-[1.5rem] hover:bg-primary-light focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75 items-center`}>
+                      <span className={`${open ? 'text-white' : 'text-black'}`}>{companyValue.title}</span>
+                      <ChevronUpIcon
+                        className={`${open ? 'rotate-180 transform text-white' : 'text-black'} h-6 w-6`}
+                      />
+                    </Disclosure.Button>
+                    <Disclosure.Panel className="px-4 pt-4 pb-2 text-neutral-90 text-md">
+                      {companyValue.desc}
+                    </Disclosure.Panel>
+                  </div>
                 )}
-              >
-                <span
-                  className={cx("text-[1.5rem]", {
-                    ["text-neutral-80 font-normal"]: !companyValue.isActive,
-                    ["text-white font-medium"]: companyValue.isActive,
-                  })}
-                >
-                  {companyValue.title}
-                </span>
-                <Image
-                  src={companyValue.isActive ? ArrowUpWhite : ArrowDownBlack}
-                  alt=""
-                  className="w-[24px] h-[24px] cursor-pointer"
-                />
-              </div>
-              {companyValue.isActive && (
-                <div className="p-[0.75rem] w-ful border-x-[1px] border-b-[1px] border-primary rounded-bl-[0.75rem] rounded-br-[0.75rem]">
-                  <p className="text-neutral-90">{companyValue.desc}</p>
-                </div>
-              )}
-            </div>
-          ))}
+              </Disclosure>
+            ))}
+          </div>
         </div>
       </div>
       <div className="w-full mt-[2.5rem] lg:px-[5rem] px-[2rem]">
@@ -315,15 +306,15 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
         <div className="mt-[2rem]">
           <h3 className="text-neutral-80 font-medium text-[1.625rem]">Unit</h3>
           <div className="w-full max-w-[1040px] mx-auto flex flex-wrap justify-center mt-[1.5rem] pb-[2rem] relative">
-            {/* <div className="absolute top-[calc(50%-55px)] right-[68px] z-10 cursor-pointer swiper-unit-button-next rounded-full bg-primary-neutral p-[0.625rem]">
+            <div className="absolute top-[calc(50%-55px)] right-4 z-10 cursor-pointer swiper-unit-button-next rounded-full bg-primary-neutral p-[0.625rem]">
               <Image src={ArrowRight} alt="" className="w-[20px] h-[20px]" />
             </div>
-            <div className="absolute top-[calc(50%-53px)] left-[1px] z-10 cursor-pointer swiper-unit-button-prev rounded-full bg-primary-neutral p-[0.625rem] rotate-180">
+            <div className="absolute top-[calc(50%-53px)] left-4 z-10 cursor-pointer swiper-unit-button-prev rounded-full bg-primary-neutral p-[0.625rem] rotate-180">
               <Image src={ArrowRight} alt="" className="w-[20px] h-[20px]" />
-            </div> */}
+            </div>
             <Swiper
               onSwiper={setSwiperRef}
-              slidesPerView={1}
+              slidesPerView={3}
               spaceBetween={32}
               loop={true}
               navigation={{
@@ -331,7 +322,6 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
                 prevEl: ".swiper-unit-button-prev",
               }}
               className="flex flex-nowrap"
-              wrapperClass="w-[864px] h-[486px]"
             >
               {units.map((unit: Object, unitIdx: number) => (
                 <SwiperSlide key={unitIdx} virtualIndex={unitIdx}>
