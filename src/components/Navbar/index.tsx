@@ -49,6 +49,7 @@ export default function Navbar() {
   ]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
 
   return (
 
@@ -80,7 +81,7 @@ export default function Navbar() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {links.map((link: Link, linkIdx: number) => (
-            <Link key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")}>
+            <Link key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")} scroll={false}>
               {link.name}
             </Link>
           ))}
@@ -113,9 +114,9 @@ export default function Navbar() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="flex flex-col gap-4 py-6 space-y-2">
                 {links.map((link: Link, linkIdx: number) => (
-                  <a key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")} onClick={() => setMobileMenuOpen(false)}>
+                  <Link key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")} onClick={() => setMobileMenuOpen(false)} scroll={false}>
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
