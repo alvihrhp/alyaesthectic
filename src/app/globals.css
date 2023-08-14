@@ -5,6 +5,7 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    scroll-padding-top: 6.5rem;
   }
 }
 
@@ -15,7 +16,8 @@
 }
 
 html, body { 
-  scroll-behavior: smooth !important 
+  scroll-behavior: smooth !important;
+  /* scroll-padding-top: 6rem; */
 }
 
 main {

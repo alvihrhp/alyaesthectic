@@ -299,7 +299,7 @@ export default function Home() {
         </Swiper>
       </div>
 
-      <div className="py-[1.25rem] px-8 lg:px-[5rem] bg-neutral-ket" id="about">
+      <div className="py-[1.25rem] px-8 lg:px-[5rem] bg-neutral-ket scroll-pt-16" id="about">
         <h2 className="text-[2rem] font-semibold text-neutral-90">
           ALYA ESTETIC CENTER
         </h2>

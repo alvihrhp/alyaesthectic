@@ -53,8 +53,8 @@ export default function Navbar() {
 
   return (
 
-    <header>
-      <nav className="w-full md:py-[1.5rem] py-[1.5rem] px-[1.2rem] md:px-[5rem] bg-white flex flex-wrap justify-between items-center sticky top-0 z-30" aria-label="Global">
+    <header className="sticky top-0 z-50">
+      <nav className="w-full md:py-[1.5rem] py-[1.5rem] px-[1.2rem] md:px-[5rem] bg-white flex flex-wrap justify-between items-center z-30" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Alya Aesthetic</span>
@@ -81,9 +81,9 @@ export default function Navbar() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {links.map((link: Link, linkIdx: number) => (
-            <Link key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")} scroll={false}>
+            <a key={linkIdx} href={link.href} className={cx("font-medium text-xl/[1.5rem] text-neutral")}>
               {link.name}
-            </Link>
+            </a>
           ))}
         </div>
         <Link
