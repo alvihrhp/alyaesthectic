@@ -42,7 +42,7 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import { Disclosure } from "@headlessui/react";
-import { ChevronRightIcon, ChevronUpIcon } from '@heroicons/react/20/solid'
+import { ChevronRightIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 
 type Object = { [key: string]: any };
 
@@ -54,7 +54,7 @@ export default function About() {
   const [companyValues, setCompanyValues] = useState<Object[]>([
     {
       title: "Visi",
-      desc: "Alya Esthetic Center is a beauty clinic that prioritizing hospitality, cleanliness and trust in Alya’s Friend. Alya Esthetic will become “one-stop solutions” for Friends of Alya. Alya Esthetic Center will continue to improve service for Alya’s friends for comfort, satisfaction & Friends of Alya’s safety is maintained. Alya Esthetic Center will continue to innovate for improve services for Friends of Alya and become solutions for beauty and health problems in one place.",
+      desc: "Menjadi  klinik kecantikan terdepan di Indonesia dengan pengalaman luar biasa serta berkomitmen melayani dan memenuhi kebutuhan pasien dalam layanan kesehatan dan kecantikkan kulit.",
       isActive: true,
       iconActive: ArrowUpWhite,
       iconDisactive: ArrowDownBlack,
@@ -230,12 +230,12 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
         </h2>
         <div className="flex flex-wrap mt-[0.75rem] justify-between items-center">
           <p className="w-full text-xl/[2rem] text-neutral-90">
-            Lorem ipsum dolor sit amet consectetur. Neque felis nisi vitae
-            ornare est. Ornare cum luctus diam nisl ornare nunc in mattis
-            aliquet. Eu faucibus nunc orci proin facilisis rhoncus et et sapien.
-            At leo elit accumsan netus viverra sem orci. Malesuada in imperdiet
-            etiam suspendisse consectetur non fermentum dui. Pellentesque ipsum
-            bibendum velit turpis aliquet quis at.
+            Our mission is to help everyone optimize Beauty that looks good and
+            feels comfortable for Friends of Alya by formulating aesthetic
+            treatments that are effective and meet the needs of Friends of Alya.
+            As the best skin specialist beauty clinic in Jakarta, the Alya
+            Esthetic Center clinic, located in Pasar Minggu, South Jakarta, has
+            a team of experienced, professional doctors.
           </p>
         </div>
       </div>
@@ -248,13 +248,32 @@ Purus in dui mi ullamcorper amet tristique nulla. Massa tempus non a aliquet et 
         <div className="w-full lg:w-[calc(100%-436px)]">
           <div className="w-full bg-white rounded-2xl">
             {companyValues.map((companyValue: Object, companyValueIdx) => (
-              <Disclosure key={companyValueIdx} defaultOpen={companyValue.isActive}>
+              <Disclosure
+                key={companyValueIdx}
+                defaultOpen={companyValue.isActive}
+              >
                 {({ open }) => (
-                  <div className={`${open ? 'border-primary border rounded-[0.75rem]' : 'border-b border-blue-50'} mb-4`}>
-                    <Disclosure.Button className={`${open ? 'bg-primary' : 'bg-white'} flex justify-between w-full px-4 py-2 text-left rounded-br-none rounded-bl-none rounded-tl-[0.75rem] rounded-tr-[0.75rem] text-[1.5rem] hover:bg-primary-light focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75 items-center`}>
-                      <span className={`${open ? 'text-white' : 'text-black'}`}>{companyValue.title}</span>
+                  <div
+                    className={`${
+                      open
+                        ? "border-primary border rounded-[0.75rem]"
+                        : "border-b border-blue-50"
+                    } mb-4`}
+                  >
+                    <Disclosure.Button
+                      className={`${
+                        open ? "bg-primary" : "bg-white"
+                      } flex justify-between w-full px-4 py-2 text-left rounded-br-none rounded-bl-none rounded-tl-[0.75rem] rounded-tr-[0.75rem] text-[1.5rem] hover:bg-primary-light focus:outline-none focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-opacity-75 items-center`}
+                    >
+                      <span className={`${open ? "text-white" : "text-black"}`}>
+                        {companyValue.title}
+                      </span>
                       <ChevronUpIcon
-                        className={`${open ? 'rotate-180 transform text-white' : 'text-black'} h-6 w-6`}
+                        className={`${
+                          open
+                            ? "rotate-180 transform text-white"
+                            : "text-black"
+                        } h-6 w-6`}
                       />
                     </Disclosure.Button>
                     <Disclosure.Panel className="px-4 pt-4 pb-2 text-neutral-90 text-md">

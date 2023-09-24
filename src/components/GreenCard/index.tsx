@@ -24,13 +24,16 @@ export default function GreenCard({
       <Image
         src={image}
         alt=""
-        className={cx("rounded-t-lg border-[1px] border-[#DCDCDC] object-cover", {
-          ["cursor-pointer"]: from,
-          ["w-[250px] h-[250px]"]: !widthImage && !heightImage,
-          [`${widthImage} ${heightImage}`]: widthImage && heightImage,
-        })}
+        className={cx(
+          "rounded-t-lg border-[1px] border-[#DCDCDC] object-cover",
+          {
+            ["cursor-pointer"]: from,
+            ["w-[250px]"]: !widthImage && !heightImage,
+            [`${widthImage} ${heightImage}`]: widthImage && heightImage,
+          }
+        )}
       />
-      <div className="py-[0.5rem] bg-primary-light text-center rounded-b-lg">
+      <div className="w-full p-[0.5rem] bg-primary-light text-center rounded-b-lg">
         <p className="mb-[0.25rem] font-medium">{heading}</p>
         <p
           className={cx({
